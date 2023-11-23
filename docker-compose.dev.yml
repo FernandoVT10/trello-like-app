@@ -1,0 +1,24 @@
+services:
+  frontend:
+    image: trello-like-frontend:dev
+    build:
+      context: .
+      dockerfile: ./frontend/Dockerfile
+      target: dev
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+
+  backend:
+    image: trello-like-backend:dev
+    build:
+      context: .
+      dockerfile: ./backend/Dockerfile
+      target: dev
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    ports:
+      - "3001:3000"

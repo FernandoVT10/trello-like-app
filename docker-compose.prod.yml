@@ -1,0 +1,18 @@
+services:
+  frontend:
+    image: trello-like-frontend
+    build:
+      context: .
+      dockerfile: ./frontend/Dockerfile
+      target: prod
+    ports:
+      - "3000:80"
+
+  backend:
+    image: trello-like-backend
+    build:
+      context: .
+      dockerfile: ./backend/Dockerfile
+      target: prod
+    ports:
+      - "3001:3000"
