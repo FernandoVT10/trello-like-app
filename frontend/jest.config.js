@@ -6,7 +6,7 @@ module.exports = {
     "\\.(css|less|scss|sass)$": "identity-obj-proxy"
   },
   setupFilesAfterEnv: [
-    "<rootDir>/setupTests.ts"
+    "<rootDir>/src/setupTests.ts"
   ],
   transform: {
     "^.+\\.tsx?$": "ts-jest"
