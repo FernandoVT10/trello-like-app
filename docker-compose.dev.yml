@@ -22,3 +22,13 @@ services:
       - /app/node_modules
     ports:
       - "3001:3000"
+    environment:
+      MONGO_URI: mongodb://root:pass@mongo:27017
+
+  mongo:
+    image: mongo:7.0
+    command: mongod --quiet --logpath /dev/null
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: pass
