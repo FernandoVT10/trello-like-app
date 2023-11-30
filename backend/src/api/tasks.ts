@@ -1,11 +1,12 @@
 import { Router } from "express";
 import asyncHandler from "express-async-handler";
 
-import TaskRepository from "./repositories/TaskRepository";
+import TaskRepository from "@/repositories/TaskRepository";
+import TaskValidator from "@/validators/TaskValidator";
 
 const router = Router();
 
-router.post("/", asyncHandler(async (req, res) => {
+router.post("/", ...TaskValidator.createTask, asyncHandler(async (req, res) => {
   const name = req.body.name;
 
   const createdTask = await TaskRepository.createOne({ name });
