@@ -4,14 +4,12 @@ import checkValidation from "../checkValidation";
 import { body } from "express-validator";
 
 describe("middlewares/checkValidation", () => {
-  const middleware = checkValidation();
-
   it("should call next when no errors", () => {
     const req = httpMocks.createRequest();
     const res = httpMocks.createResponse();
     const next = jest.fn();
 
-    middleware(req, res, next);
+    checkValidation(req, res, next);
     
     expect(next).toHaveBeenCalled();
   });
@@ -19,8 +17,8 @@ describe("middlewares/checkValidation", () => {
   it("should return the errors formatted", async () => {
     const req = httpMocks.createRequest({
       body: {
-        test: ""
-      }
+        test: "",
+      },
     });
     const res = httpMocks.createResponse();
     const next = jest.fn();
@@ -33,16 +31,16 @@ describe("middlewares/checkValidation", () => {
     // so, await is necessary for this test to work
     await validationMiddleware(req, res, next);
 
-    middleware(req, res, next);
+    checkValidation(req, res, next);
 
     expect(res.statusCode).toBe(400);
     expect(res._getJSONData()).toEqual({
       errors: [
         {
           field: "test",
-          message: "Test is required"
-        }
-      ]
+          message: "Test is required",
+        },
+      ],
     });
   });
 });
