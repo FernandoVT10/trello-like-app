@@ -1,10 +1,9 @@
-import supertest from "supertest";
-import app from "@/app";
 import userModelHelper from "./userModelHelper";
 
 import { comparePassword } from "@/utils/passwordHasher";
+import { createRequest } from "@test/utils/request";
 
-const request = supertest(app);
+const request = createRequest();
 
 describe("POST /api/users", () => {
   it("should create a user and return a success message", async () => {

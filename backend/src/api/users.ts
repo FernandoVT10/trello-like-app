@@ -14,4 +14,13 @@ router.post("/", ...UserValidator.createUser, asyncHandler(async (req, res) => {
   });
 }));
 
+router.post("/login", ...UserValidator.login, asyncHandler(async (req, res) => {
+  const username = req.body.username;
+  const token = await UserService.generateJWT(username);
+
+  res.json({
+    data: { token },
+  });
+}));
+
 export default router;

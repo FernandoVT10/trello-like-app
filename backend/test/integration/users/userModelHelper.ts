@@ -4,7 +4,12 @@ const findOneUser = (): Promise<UserClass | null> => {
   return UserModel.findOne();
 };
 
-const createUser = (data: UserClass): Promise<UserClass> => {
+interface CreateUserData {
+  username: string;
+  password: string;
+}
+
+const createUser = (data: CreateUserData): Promise<UserClass> => {
   return UserModel.create(data);
 };
 

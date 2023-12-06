@@ -1,4 +1,6 @@
 import UserRepository from "@/repositories/UserRepository";
+import jwtHelper from "@/utils/jwtHelper";
+
 import { hashPassword } from "@/utils/passwordHasher";
 
 interface CreateUserData {
@@ -15,6 +17,13 @@ const createUser = async (data: CreateUserData): Promise<void> => {
   });
 };
 
+const generateJWT = async (username: string): Promise<string> => {
+  const user = await UserRepository.getUserByUsername(username);
+  const token = await jwtHelper.signToken({ userId: user._id });
+  return token;
+};
+
 export default {
   createUser,
+  generateJWT,
 };

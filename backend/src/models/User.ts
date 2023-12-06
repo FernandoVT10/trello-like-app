@@ -1,4 +1,7 @@
 import { getModelForClass, prop } from "@typegoose/typegoose";
+import { Base } from "@typegoose/typegoose/lib/defaultClasses";
+
+export interface UserClass extends Base {}
 
 export class UserClass {
   @prop({ required: true, maxlength: 25 })
