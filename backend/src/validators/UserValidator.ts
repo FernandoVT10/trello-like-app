@@ -71,8 +71,8 @@ const loginSchema: Schema = {
 
         throw new Error("Password is incorrect");
       },
-    }
-  }
+    },
+  },
 };
 
 export default {

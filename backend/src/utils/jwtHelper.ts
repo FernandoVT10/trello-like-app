@@ -22,11 +22,11 @@ const signToken = (data: JwtPayload): Promise<string> => {
       (err, token) => {
         if(err || !token) return reject(err);
         resolve(token);
-      },
+      }
     );
   });
 };
 
 export default {
-  verifyToken, signToken
+  verifyToken, signToken,
 };
