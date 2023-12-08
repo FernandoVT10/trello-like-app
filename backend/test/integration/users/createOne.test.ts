@@ -43,6 +43,7 @@ describe("POST /api/users", () => {
 
     const res = await request.post("/api/users").send(data);
 
+    expect(res.statusCode).toBe(400);
     expect(res.body.errors).toHaveLength(2);
   });
 
@@ -56,6 +57,7 @@ describe("POST /api/users", () => {
 
     const res = await request.post("/api/users").send(data);
 
+    expect(res.statusCode).toBe(400);
     expect(
       res.body.errors[0].message
     ).toBe("Username is already taken");

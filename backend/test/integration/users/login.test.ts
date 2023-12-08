@@ -14,6 +14,7 @@ describe("POST /api/users/login", () => {
 
     const res = await request.post("/api/users/login").send(data);
 
+    expect(res.statusCode).toBe(200);
     expect(res.body.data.token).not.toBeNull();
   });
 
@@ -25,6 +26,7 @@ describe("POST /api/users/login", () => {
 
     const res = await request.post("/api/users/login").send(data);
 
+    expect(res.statusCode).toBe(400);
     expect(res.body.errors[0].message).toBe("Username doesn't exist");
   });
 
@@ -41,6 +43,7 @@ describe("POST /api/users/login", () => {
 
     const res = await request.post("/api/users/login").send(data);
 
+    expect(res.statusCode).toBe(400);
     expect(res.body.errors[0].message).toBe("Password is incorrect");
   });
 });
